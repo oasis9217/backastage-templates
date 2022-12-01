@@ -1,22 +1,15 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: artist-web
-  description: The place to be, for great artists
-  labels:
-    example.com/custom: custom_label_value
+  namespace: default
   annotations:
-    example.com/service-discovery: artistweb
-    circleci.com/project-slug: github/example-org/artist-website
-  tags:
-    - java
-  links:
-    - url: https://admin.example-org.com
-      title: Admin Dashboard
-      icon: dashboard
-      type: admin-dashboard
+    tektonci/build-namespace: backstage
+    tektonci/pipeline-label-selector: 'build-name=backstage-integration-test'
+    'backstage.io/kubernetes-id': dice-roller
+  name: backstage-integration-test
+  description: Testing backstage Integration with Tekton
 spec:
-  type: website
+  type: service
   lifecycle: production
-  owner: artist-relations-team
-  system: public-websites
+  owner: user:guest
+
